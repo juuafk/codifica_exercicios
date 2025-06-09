@@ -1,15 +1,17 @@
 import 'dart:io';
+
+void tabuada(int x) {        
+  
+  print("Tabuada do $x:");
+  for (int i = 1; i <= 10; i++) {  
+    print("$x x $i = ${x * i}");   
+  }
+}
 void main() {
 
-  print("nome: ");
-  String nome = stdin.readLineSync()!;
-  print("idade: ");
-  String idade = stdin.readLineSync()!;
-  print("cidade: ");
-  String cidade = stdin.readLineSync()!;
+  print("Digite um numero para ver a tabuada: ");
+  String numero = stdin.readLineSync() ?? "0";
+  int n = int.parse(numero);
 
-  String frase = "$nome tem $idade anos e mora em $cidade.";
-
-  print(frase);
-
+  tabuada(n);
 }

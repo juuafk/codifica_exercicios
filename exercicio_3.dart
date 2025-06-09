@@ -1,26 +1,42 @@
 import 'dart:io';
-void main() {
 
-  print("orçamento: ");
-  String Orcamento = stdin.readLineSync()!;
-  print("preço do item 1: ");
-  String Preco1 = stdin.readLineSync()!;
-  print("preço do item 2: ");
-  String Preco2 = stdin.readLineSync()!;
-  print("preço do item 3: ");
-  String Preco3 = stdin.readLineSync()!;
+String lista() {
+  String item = '';
+  String Lista  = '';
+  int cont = 0;
+
+  while(true) {
+    print("Digite um item da lista de compras(digite 'fim' para finalizar): ");
+    item = stdin.readLineSync()!;
+    
+    if (item == 'fim') break;
+
+    if (cont == 0) {
+      Lista = '$item';
+    }
+    else {
+      Lista = '$Lista\n$item';
+    }
+    cont++;
+  }
+
+  return Lista;
+}
+void salvarListaEmArquivo(String Lista) async {
+  String conteudo = Lista;
+
+  print("Digite o nome para o arquivo txt: ");
+  String caminho = stdin.readLineSync()! + '.txt';
+ 
+  File arquivo = File(caminho);
+  await arquivo.writeAsString(conteudo);
   
-  final double orcamento = double.parse(Orcamento);
-  double preco1 = double.parse(Preco1);
-  double preco2 = double.parse(Preco2);
-  double preco3 = double.parse(Preco3);
+  print("Lista de compras salva em '$caminho' com sucesso!!");
 
-  double total = preco1 + preco2 + preco3;
+}
 
-  String resultado = (orcamento >= total)
-      ? "dentro do orçamento!"
-      : "orçamento estourado!";
 
-  print(resultado);
-  print("custo total: $total");
+void main() {
+  String Lista = lista();
+  salvarListaEmArquivo(Lista);
 }
