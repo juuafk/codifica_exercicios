@@ -1,21 +1,15 @@
-import 'dart:io';
-
-void leArquivo(String caminho) async { //async sinaliza a possibilidade de funcoes demoradas
-  
-  try { //tenta abrir
-    File arquivo = File(caminho); //cria uma variavel file com o caminho que o usuario forneceu
-    String conteudo = await arquivo.readAsString(); //le o arquivo com o await(que pode demorar)
-    
-    print("Conteudo do arquivo:\n$conteudo\nArquivo '$arquivo' lido e fechado");
-  }
-  catch(e) { //caso nao consiga abrir
-      print("Ocorreu um erro $e");
-  }
-}
+import '../lib/produto_3.dart';
+import '../lib/carrinhodecompras_4.dart';
 
 void main() {
-  print("Digite o nome do arquivo (ou caminho se necessario):");
-  String caminho = stdin.readLineSync() ?? "0";
-  leArquivo(caminho);
+  var p1 = Produto(codigo:'12345', nome:"placa-mãe", preco: 1263.0);
+  var p2 = Produto(codigo:"67890", nome:"processador", preco: 1672.0);
+  var p3 = Produto(codigo:"13579", nome:"teclado mecânico", preco: 350.0);
 
+  var carrinho = CarrinhoDeCompras();
+  carrinho.adicionarProduto(p1);
+  carrinho.adicionarProduto(p2);
+  carrinho.adicionarProduto(p3);
+
+  carrinho.exibirCarrinho();
 }

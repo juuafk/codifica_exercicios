@@ -1,17 +1,15 @@
-import 'dart:io';
+import '../lib/produto_2.dart';
 
-void tabuada(int x) {        
-  
-  print("Tabuada do $x:");
-  for (int i = 1; i <= 10; i++) {  
-    print("$x x $i = ${x * i}");   
-  }
-}
 void main() {
+Produto p1 = Produto("12345", "placa-mãe", 1263);
 
-  print("Digite um numero para ver a tabuada: ");
-  String numero = stdin.readLineSync() ?? "0";
-  int n = int.parse(numero);
+print("--- Detalhes Originais ---");
+p1.exibirDetalhes();
 
-  tabuada(n);
+print("--- Detalhes com Desconto ---");
+p1.aplicarDesconto(15);
+p1.exibirDetalhes();
+
+print("Total de produtos criados: ${Produto.totalDeProdutos}");
 }
+
