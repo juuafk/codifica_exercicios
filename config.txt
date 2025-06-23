@@ -1,4 +1,0 @@
-Configurações:
-tema: escuro
-economia de energia: ativado
-som: desativado
